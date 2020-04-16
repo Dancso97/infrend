@@ -62,7 +62,12 @@
                                 <f:selectItem itemLabel="Nem Aktív" itemValue="false"/>
                             </p:selectOneMenu>
                         </f:facet>
-                        <h:outputText value="#{user.deleted_user? 'Nem aktív' : 'Aktív'}"/>
+
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{user.deleted_user? 'Nem aktív' : 'Aktív'}"  style="width:96%"  /></f:facet>
+                            <f:facet name="input"><h:selectBooleanCheckbox value="#{user.deleted_user}" itemLabel="törlés" style="width:96%"/></f:facet>
+                        </p:cellEditor>
+
                     </p:column>
                     <p:column style="width:35px">
                         <p:rowEditor />
