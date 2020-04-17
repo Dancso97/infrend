@@ -3,11 +3,11 @@ package beke.ire.service;
 import beke.ire.dto.UsersDTO;
 import beke.ire.entity.UsersEntity;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import java.util.ArrayList;
 
-@ManagedBean(eager = true)
+@Named
 @ApplicationScoped
 public class UserService {
 
