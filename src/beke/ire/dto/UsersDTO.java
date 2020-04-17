@@ -97,18 +97,6 @@ public class UsersDTO {
         return user;
     }
 
-    /*
-    public List<UsersEntity> getAllUsers() {
-        System.out.println("Getting all users from database");
-        List<UsersEntity> list = new ArrayList<UsersEntity>();
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            list = session.createQuery("from UsersEntity",UsersEntity.class).list();
-        }catch (Exception e){
-            System.out.println("\n getAllUsers exception: \n "+e.getMessage());
-        }
-        return list;
-    }
-*/
     public void updateUser(UsersEntity entity) {
         Transaction transaction = null;
         try(Session session = HibernateUtil.getSessionFactory().openSession()){

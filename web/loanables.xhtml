@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:dataTable var="ln" value="#{loanablesView.loanables}" filteredValue="#{loanablesView.filteredLoanables}">
+                    <p:column headerText="Sorszám">
+                        <h:outputText value="#{ln.id}" />
+                    </p:column>
+
+                    <p:column headerText="Szerző" filterBy="#{ln.author}" filterMatchMode="contains">
+                        <h:outputText value="#{ln.author}" />
+                    </p:column>
+
+                    <p:column headerText="Cím" filterBy="#{ln.title}" filterMatchMode="contains">
+                        <h:outputText value="#{ln.title}" />
+                    </p:column>
+
+                    <p:column headerText="Tipus">
+                        <h:outputText value="#{ln.type.label}" />
+                    </p:column>
+
+                    <p:column headerText="Beszerzés dátuma">
+                        <h:outputText value="#{ln.supplied_date}" />
+                    </p:column>
+
+                    <p:column headerText="Státusz">
+                        <h:outputText value="#{ln.status.label}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</h:body>
+</html>

@@ -26,10 +26,12 @@ public class LoanablesEntity {
     private Timestamp supplied_date;
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private LoanableTypeEntity type;
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private LoanableStatusEntity status;
 

@@ -2,6 +2,7 @@ package beke.ire.dto;
 
 import beke.ire.entity.LoanableStatusEntity;
 import beke.ire.entity.LoanablesEntity;
+import beke.ire.entity.UsersEntity;
 import beke.ire.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -75,12 +76,11 @@ public class LoanablesDTO {
         return loanable;
     }
 
-    public List<LoanablesEntity> getAllLoanable() {
-        List<LoanablesEntity> list = new ArrayList();
-        try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            list = session.createQuery("Select l from LoanablesEntity l",LoanablesEntity.class).list();
-        }catch (Exception e){
-            System.out.println("\n getAllLoanable exception: \n "+e.getMessage());
+    public ArrayList<LoanablesEntity> getAllLoanable() {
+        ArrayList<LoanablesEntity> list = new ArrayList();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("Select l from LoanablesEntity l");
+            list = (ArrayList<LoanablesEntity>) query.getResultList();
         }
         return list;
     }

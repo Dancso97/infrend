@@ -3,11 +3,11 @@ package beke.ire.service;
 import beke.ire.dto.LoaningsDTO;
 import beke.ire.entity.LoaningsEntity;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 import java.util.List;
 
-@ManagedBean(name="loaningService")
+@Named
 @ApplicationScoped
 public class LoaningService {
 
