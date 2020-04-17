@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:dataTable var="lni" value="#{loaningsView.loaningsEntities}" filteredValue="#{loaningsView.filteredLoaningsEntities}">
+                    <p:column headerText="Sorszám" filterBy="#{lni.id}" filterMatchMode="exact">
+                        <h:outputText value="#{lni.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönző neve: ">
+                        <h:outputText value="#{lni.who_borrowed.full_name}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönző azonosítója: " filterBy="#{lni.who_borrowed.id}" filterMatchMode="exact">
+                        <h:outputText value="#{lni.who_borrowed.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönzött tétel szerzője: ">
+                        <h:outputText value="#{lni.what_borrowed.author}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönzött tétel címe: ">
+                        <h:outputText value="#{lni.what_borrowed.title}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönzés dátuma: ">
+                        <h:outputText value="#{lni.when_borrowed}"/>
+                    </p:column>
+
+                    <p:column headerText="Visszahozva: ">
+                        <h:outputText value="#{lni.when_got_back}"/>
+                    </p:column>
+
+                    <p:column headerText="Kikölcsönzött napok száma: ">
+                        <h:outputText value="#{lni.loaned_days}"/>
+                    </p:column>
+
+                    <p:column headerText="Késés van-e? (30nap felett)">
+                        <h:outputText value="#{lni.late? 'Igen' : 'Nem'}"/>
+                    </p:column>
+
+                    <p:column headerText="Számított késés (30nap felett)">
+                        <h:outputText value="#{lni.late_borrowing_days}"/>
+                    </p:column>
+
+                    <p:column headerText="Számított késés (30nap felett)">
+                        <h:outputText value="#{lni.late_borrowing_days}"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Kölcsönzés lezárása" id="closeBorrowing" action="#{loaningsView.closeBorrowing(lni.id)}" disabled="#{!empty lni.when_got_back}"  ajax="false" />
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

@@ -28,6 +28,16 @@ public class LoanablesDTO {
         }
     }
 
+    public LoanablesEntity getLoanableById(int id) {
+        ArrayList<LoanablesEntity> list = new ArrayList<LoanablesEntity>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("Select l from LoanablesEntity l where l.id =: id");
+            query.setParameter("id",id);
+            list = (ArrayList<LoanablesEntity>) query.getResultList();
+        }
+        return list.get(0);
+    }
+
     public LoanablesEntity getLoanableByTitle(LoanablesEntity entity) {
         LoanablesEntity loanable = new LoanablesEntity();
         List<LoanablesEntity> list = new ArrayList();

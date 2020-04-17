@@ -78,22 +78,14 @@ public class UsersDTO {
         return user;
     }
 
-    public UsersEntity getUserById(UsersEntity entity) {
-        UsersEntity user = new UsersEntity();
-        List<UsersEntity> list = new ArrayList();
+    public UsersEntity getUserById(int id) {
+        ArrayList<UsersEntity> list = new ArrayList<UsersEntity>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-
-            list = session.createQuery("Select u from UsersEntity u where u.id = : id", UsersEntity.class).list();
-            user.setFull_name(list.get(0).getFull_name());
-            user.setHome_address(list.get(0).getHome_address());
-            user.setId_card_number(list.get(0).getId_card_number());
-            user.setMobile_number(list.get(0).getMobile_number());
-            user.setDeleted_user(list.get(0).isDeleted_user());
-
-        } catch (Exception e) {
-            System.out.println("\n getUserById exception: \n " + e.getMessage());
+            Query query = session.createQuery("Select u from UsersEntity u where u.id =: id");
+            query.setParameter("id",id);
+            list = (ArrayList<UsersEntity>) query.getResultList();
         }
-        return user;
+        return list.get(0);
     }
 
     public void updateUser(UsersEntity entity) {

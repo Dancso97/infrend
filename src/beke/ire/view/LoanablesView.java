@@ -3,7 +3,6 @@ package beke.ire.view;
 import beke.ire.entity.LoanableStatusEntity;
 import beke.ire.entity.LoanableTypeEntity;
 import beke.ire.entity.LoanablesEntity;
-import beke.ire.entity.LoaningsEntity;
 import beke.ire.service.LoanablesService;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +16,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.EnumSet;
-import java.util.List;
 
 @Named("loanablesView")
 @ViewScoped

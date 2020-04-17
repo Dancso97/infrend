@@ -32,4 +32,8 @@ public class LoanablesService {
     public void deleteLoannable(LoanablesEntity entity) {
         loanables.deleteLoanable(entity);
     }
+
+    public LoanablesEntity getLoanableById(int id){
+        return loanables.getLoanableById(id);
+    }
 }

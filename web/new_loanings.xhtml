@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+<h:head>
+</h:head>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form id="form">
+                <p:messages>
+                    <p:autoUpdate/>
+                </p:messages>
+                <p:growl id="growl" life="2000"/>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h2 align="center">Új kölcsönzés hozzáadása</h2>
+                    <h:outputText value="Szerző:"/>
+
+                    <p:outputLabel for="@next" value="Kölcsönző azonosítója: "/>
+                    <p:selectOneMenu id="who" value="#{loaningsView.entity.who_borrowed}">
+                        <f:selectItem itemLabel="Válasszon egyet!" itemValue=""/>
+                        <f:selectItems value="#{loaningsView.usersWhoCanBorrow}" var="user" itemValue="#{user.id}"
+                                       itemLabel="#{user.id} - #{user.full_name}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel for="@next" value="Kikölcsönözendő tárgy: "/>
+                    <p:selectOneMenu id="what" value="#{loaningsView.entity.what_borrowed}">
+                        <f:selectItem itemLabel="Válasszon egyet!" itemValue=""/>
+                        <f:selectItems value="#{loaningsView.whatUsersCanBorrow}" var="ln" itemValue="#{ln.id}"
+                                       itemLabel="#{ln.author} - #{ln.title}"/>
+                    </p:selectOneMenu>
+
+                    <p:commandButton value="Új kölcsönzés létrehozása" id="withIcon"
+                                     action="#{loaningsView.createBorrowing}" update=":form:growl"
+                                     style="margin-right:20px;" icon="pi pi-save"/>
+                </h:panelGrid>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+
+</html>

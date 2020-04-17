@@ -33,4 +33,8 @@ public class UserService {
         usersDto.deleteUser(entity);
     }
 
+    public UsersEntity getUserById(int id){
+        return usersDto.getUserById(id);
+    }
+
 }
