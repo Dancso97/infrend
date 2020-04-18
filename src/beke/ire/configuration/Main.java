@@ -29,6 +29,7 @@ public class Main {
     }
 
     public static void main(final String[] args) throws Exception {
+        System.out.println("In the main class");
         final Session session = getSession();
         try {
             System.out.println("querying all the managed entities...");

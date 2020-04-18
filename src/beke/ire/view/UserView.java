@@ -63,8 +63,6 @@ public class UserView implements Serializable {
     }
 
     //Getters setters
-
-
     public ArrayList<UsersEntity> getFilteredUsers() {
         return filteredUsers;
     }

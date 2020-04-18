@@ -1,7 +1,6 @@
 package beke.ire.service;
 
 import beke.ire.dto.LoaningsDTO;
-import beke.ire.dto.UsersDTO;
 import beke.ire.entity.LoaningsEntity;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -43,10 +42,6 @@ public class LoaningService {
         entity.getWhat_borrowed().setStatus(borrowed);
         entity.setWhen_borrowed(new Timestamp(date.getTime()));
         loanings.createNewLoan(entity);
-    }
-
-    public void updateLoaning(LoaningsEntity entity) {
-        loanings.updateLoan(entity);
     }
 
     public void deleteLoaning(int id) {

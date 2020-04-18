@@ -40,7 +40,7 @@ public class LoaningsView implements Serializable {
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("LoaningService injected : " + service);
         entity.setWho_borrowed(new UsersEntity());//Populating it to avoid target unreachable
         entity.setWhat_borrowed(new LoanablesEntity());
@@ -50,7 +50,7 @@ public class LoaningsView implements Serializable {
         loanables = loanablesService.getAllLoanables();
     }
 
-    public String createBorrowing(){
+    public String createBorrowing() {
         System.out.println("Creating : \n " + entity.toString());
         entity.setWho_borrowed(userService.getUserById(entity.getWho_borrowed().getId()));
         entity.setWhat_borrowed(loanablesService.getLoanableById(entity.getWhat_borrowed().getId()));
@@ -60,25 +60,25 @@ public class LoaningsView implements Serializable {
     }
 
     public String closeBorrowing(int id) {
-        System.out.println("ID is : " +id);
+        System.out.println("ID is : " + id);
         service.deleteLoaning(id);
         return "loanings?faces-redirect=true\"";
     }
 
-    public ArrayList<UsersEntity> getUsersWhoCanBorrow(){
+    public ArrayList<UsersEntity> getUsersWhoCanBorrow() {
         ArrayList<UsersEntity> usersWhoCanborrow = new ArrayList<>();
-        for(UsersEntity e : users){
-            if(service.getNumberOfLoans(e.getId()) < 7){
+        for (UsersEntity e : users) {
+            if (service.getNumberOfLoans(e.getId()) < 7) {
                 usersWhoCanborrow.add(e);  //getting only those who can borrow something.
             }
         }
         return usersWhoCanborrow;
     }
 
-    public ArrayList<LoanablesEntity> getWhatUsersCanBorrow(){
+    public ArrayList<LoanablesEntity> getWhatUsersCanBorrow() {
         ArrayList<LoanablesEntity> loanablesThatCanBeBorrowed = new ArrayList<>();
-        for(LoanablesEntity e : loanables){
-            if(e.getStatus() == LoanableStatusEntity.loanable){
+        for (LoanablesEntity e : loanables) {
+            if (e.getStatus() == LoanableStatusEntity.loanable) {
                 loanablesThatCanBeBorrowed.add(e);
             }
         }
@@ -112,7 +112,7 @@ public class LoaningsView implements Serializable {
     }
 
     public ArrayList<LoaningsEntity> getLoaningsEntities() {
-        if(loaningsEntities == null){
+        if (loaningsEntities == null) {
             loaningsEntities = service.getAllLoanings();
         }
         return loaningsEntities;

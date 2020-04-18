@@ -9,7 +9,7 @@ public class UsersEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Basic //for not null constraint
@@ -17,7 +17,7 @@ public class UsersEntity {
     private String full_name;
 
     @Basic
-    @Column(name = "mobile_number",length = 11)
+    @Column(name = "mobile_number", length = 11)
     private String mobile_number;
 
     @Basic

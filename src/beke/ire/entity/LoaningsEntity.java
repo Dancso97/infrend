@@ -2,7 +2,6 @@ package beke.ire.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
@@ -10,7 +9,7 @@ import java.util.Objects;
 public class LoaningsEntity {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne
@@ -31,17 +30,17 @@ public class LoaningsEntity {
     @Column(name = "loaned_days")
     private int loaned_days;
 
-    @Transient //i dont want to add this to db
+    @Transient //I dont want to add this to db
     private boolean isLate;
 
     @Transient
     private int late_borrowing_days;
 
-    public LoaningsEntity(){
+    public LoaningsEntity() {
 
     }
 
-    public LoaningsEntity(UsersEntity who_borrowed, LoanablesEntity what_borrowed, Timestamp when_borrowed, Timestamp when_got_back,int loaned_days) {
+    public LoaningsEntity(UsersEntity who_borrowed, LoanablesEntity what_borrowed, Timestamp when_borrowed, Timestamp when_got_back, int loaned_days) {
         this.who_borrowed = who_borrowed;
         this.what_borrowed = what_borrowed;
         this.when_borrowed = when_borrowed;

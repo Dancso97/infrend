@@ -5,10 +5,10 @@ USE beke_library;
 CREATE TABLE users (
     id int AUTO_INCREMENT PRIMARY KEY ,
     full_name varchar(50) NOT NULL ,
-    mobile_number varchar(8) UNIQUE NOT NULL,
-    id_card_number varchar(8) UNIQUE NOT NULL,
+    mobile_number varchar(20) UNIQUE NOT NULL,
+    id_card_number varchar(20) UNIQUE NOT NULL,
     home_address varchar(255) NOT NULL,
-    is_deleted_user int(1) NOT NULL CHECK (is_deleted_user IN (0,1))
+    deleted_user int(1) NOT NULL CHECK (deleted_user IN (0,1))
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 CREATE TABLE loanables (

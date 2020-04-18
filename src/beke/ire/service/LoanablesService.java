@@ -25,15 +25,7 @@ public class LoanablesService {
         loanables.createNewLoanable(entity);
     }
 
-    public void updateLoanable(LoanablesEntity entity) {
-        loanables.updateLoanable(entity);
-    }
-
-    public void deleteLoannable(LoanablesEntity entity) {
-        loanables.deleteLoanable(entity);
-    }
-
-    public LoanablesEntity getLoanableById(int id){
+    public LoanablesEntity getLoanableById(int id) {
         return loanables.getLoanableById(id);
     }
 }
