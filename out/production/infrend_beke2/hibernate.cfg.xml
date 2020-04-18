@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/beke_library?serverTimezone=UTC</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/beke_library?unicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">testuser1</property>
         <property name="hibernate.connection.password">Testuser1</property>
         <property name="hbm2ddl.auto">update</property>

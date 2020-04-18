@@ -18,6 +18,7 @@ public class LoaningsDTO {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             System.out.println("\n Crating new Loan : \n" + entity.toString());
+            session.update(entity.getWhat_borrowed());
             session.save(entity);
             transaction.commit();
         } catch (Exception e) {
