@@ -42,6 +42,9 @@ public class LoaningsView implements Serializable {
     @PostConstruct
     public void init(){
         System.out.println("LoaningService injected : " + service);
+        entity.setWho_borrowed(new UsersEntity());//Populating it to avoid target unreachable
+        entity.setWhat_borrowed(new LoanablesEntity());
+
         loaningsEntities = service.getAllLoanings();
         users = userService.getAllUsers();
         loanables = loanablesService.getAllLoanables();

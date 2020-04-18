@@ -12,6 +12,7 @@
 </h:head>
 <h:body>
     <ui:composition template="templates/common.xhtml">
+        <h2 align="center">Új kölcsönzés hozzáadása</h2>
         <ui:define name="content">
             <h:form id="form">
                 <p:messages>
@@ -19,18 +20,16 @@
                 </p:messages>
                 <p:growl id="growl" life="2000"/>
                 <h:panelGrid columns="2" cellpadding="5">
-                    <h2 align="center">Új kölcsönzés hozzáadása</h2>
-                    <h:outputText value="Szerző:"/>
 
                     <p:outputLabel for="@next" value="Kölcsönző azonosítója: "/>
-                    <p:selectOneMenu id="who" value="#{loaningsView.entity.who_borrowed}">
+                    <p:selectOneMenu id="who" value="#{loaningsView.entity.who_borrowed.id}">
                         <f:selectItem itemLabel="Válasszon egyet!" itemValue=""/>
                         <f:selectItems value="#{loaningsView.usersWhoCanBorrow}" var="user" itemValue="#{user.id}"
                                        itemLabel="#{user.id} - #{user.full_name}"/>
                     </p:selectOneMenu>
 
                     <p:outputLabel for="@next" value="Kikölcsönözendő tárgy: "/>
-                    <p:selectOneMenu id="what" value="#{loaningsView.entity.what_borrowed}">
+                    <p:selectOneMenu id="what" value="#{loaningsView.entity.what_borrowed.id}">
                         <f:selectItem itemLabel="Válasszon egyet!" itemValue=""/>
                         <f:selectItems value="#{loaningsView.whatUsersCanBorrow}" var="ln" itemValue="#{ln.id}"
                                        itemLabel="#{ln.author} - #{ln.title}"/>
